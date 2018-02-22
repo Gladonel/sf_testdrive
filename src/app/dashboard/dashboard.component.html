@@ -1,0 +1,266 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="box box-widget">
+        <div class="widget-header bg-primary text-center">
+          <h3 class="widget-user-username">Firm-wide Impact</h3>
+        </div>
+        <div class="widget-image">
+          <img class="rounded-circle" src="assets/img/avatars/6.jpg" alt="User Avatar">
+        </div>
+        <div class="box-footer">
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="description-block">
+                <h5 class="description-header">$5.5M</h5>
+                <span class="description-text">COST IMPACT</span>
+              </div>
+              <!-- /.description-block -->
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-4">
+              <div class="description-block">
+                <h5 class="description-header">27.5k</h5>
+                <span class="description-text">REMOVAL REQUESTS</span>
+              </div>
+              <!-- /.description-block -->
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-4">
+              <div class="description-block">
+                <h5 class="description-header">$165k</h5>
+                <span class="description-text">SOCIAL IMPACT</span>
+              </div>
+              <!-- /.description-block -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.box-footer -->
+      </div>
+      <!-- /.widget-user -->
+    </div>
+
+    <div class="col-md-6">
+      <div class="box box-widget">
+        <div class="widget-header bg-danger text-center">
+          <h3 class="widget-user-username">Your Impact</h3>
+        </div>
+        <div class="widget-image">
+          <img class="rounded-circle" src="assets/img/avatars/3.jpg" alt="User Avatar">
+        </div>
+        <div class="box-footer">
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="description-block">
+                <h5 class="description-header">$20,415</h5>
+                <span class="description-text">COST IMPACT</span>
+              </div>
+              <!-- /.description-block -->
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-4">
+              <div class="description-block">
+                <h5 class="description-header">21</h5>
+                <span class="description-text">REMOVAL REQUESTS</span>
+              </div>
+              <!-- /.description-block -->
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-4">
+              <div class="description-block">
+                <h5 class="description-header">$612</h5>
+                <span class="description-text">SOCIAL IMPACT</span>
+              </div>
+              <!-- /.description-block -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.box-footer -->
+      </div>
+      <!-- /.widget-user -->
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-12">
+          <h4 class="card-title mb-0">Year-To-Date </h4>
+          <div class="small text-muted">2018</div>
+        </div>
+        <!--/.col-->
+
+        <div class="col-sm-12 text-center">
+          <label class="radio-inline mr-3" for="rb-firm">
+            <input type="radio" id="rb-firm" [(ngModel)]="ytdRadio" (click)="changeRadioOpt('firm')" value="firm"
+                   [checked]='true'> Firm Savings
+          </label>
+          <label class="radio-inline mr-3" for="rb-your">
+            <input type="radio" id="rb-your" [(ngModel)]="ytdRadio" (click)="changeRadioOpt('your')" value="your"> Your
+            Savings
+          </label>
+          <!--<label class="radio-inline mr-3" for="rb-social">-->
+          <!--<input type="radio" id="rb-social" [(ngModel)]="ytdRadio" (click)="changeRadioOpt('social')" value="social"> Social Impact-->
+          <!--</label>-->
+        </div>
+      </div>
+      <!--/.row-->
+      <div class="chart-wrapper" style="height:300px;margin-top:40px;">
+        <canvas baseChart class="chart" [datasets]="mainChartData" [labels]="mainChartLabels"
+                [options]="mainChartOptions" [colors]="mainChartColours"
+                [legend]="mainChartLegend" [chartType]="mainChartType" (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="row">
+        <div *ngFor="let data of mainChartData" class="col-6 col-md-4 col-lg-2 mb-2 hidden-sm-down">
+          <div class="text-muted">{{data.label}}</div>
+          <strong>${{data.summaryData | number}}</strong>
+          <div class="progress progress-xs mt-2" tooltip="{{data.percentage}}%" placement="bottom">
+            <div class="progress-bar" ngClass="{{data.bgClass}}" role="progressbar"
+                 [ngStyle]="{width:data.percentage + '%'}" [attr.aria-valuenow]="data.percentage" aria-valuemin="0"
+                 aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+      <!--<ul>-->
+      <!--<li *ngFor="let data of mainChartData" class="hidden-sm-down">-->
+      <!--<div class="text-muted">{{data.label}}</div>-->
+      <!--<strong>${{data.summaryData | number}}</strong>-->
+      <!--<div class="progress progress-xs mt-2" tooltip="{{data.percentage}}%" placement="bottom">-->
+      <!--<div class="progress-bar" ngClass="{{data.bgClass}}" role="progressbar"-->
+      <!--[ngStyle]="{width:data.percentage + '%'}" [attr.aria-valuenow]="data.percentage" aria-valuemin="0"-->
+      <!--aria-valuemax="100"></div>-->
+      <!--</div>-->
+      <!--</li>-->
+      <!--</ul>-->
+    </div>
+  </div>
+  <!--/.card-->
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          Your Cost
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-6 col-lg-4">
+              <div class="service-box bloomberg">
+                <h5>Bloomberg</h5>
+                <ul>
+                  <li>
+                    <strong>5</strong>
+                    <span># of services</span>
+                  </li>
+                  <li>
+                    <strong>$23k</strong>
+                    <span>annual cost</span>
+                  </li>
+                </ul>
+              </div>
+              <!--/.service-box-->
+            </div>
+            <!--/.col-->
+            <div class="col-sm-6 col-lg-4">
+              <div class="service-box ipc">
+                <h5>IPC Dealerboard</h5>
+                <ul>
+                  <li>
+                    <strong>2</strong>
+                    <span># of devices</span>
+                  </li>
+                  <li>
+                    <strong>$18.8k</strong>
+                    <span>annual cost</span>
+                  </li>
+                </ul>
+              </div>
+              <!--/.service-box-->
+            </div>
+            <!--/.col-->
+            <div class="col-sm-6 col-lg-4">
+              <div class="service-box virtual-desktop">
+                <h5>Virtual Desktop</h5>
+                <ul>
+                  <li>
+                    <strong>2</strong>
+                    <span># of sessions</span>
+                  </li>
+                  <li>
+                    <strong>$890</strong>
+                    <span>annual cost</span>
+                  </li>
+                </ul>
+              </div>
+              <!--/.service-box-->
+            </div>
+            <!--/.col-->
+            <div class="col-sm-6 col-lg-4">
+              <div class="service-box mobile-phone">
+                <h5>Mobile Phone</h5>
+                <ul>
+                  <li>
+                    <strong>1</strong>
+                    <span># of accounts</span>
+                  </li>
+                  <li>
+                    <strong>$1.5k</strong>
+                    <span>annual cost</span>
+                  </li>
+                </ul>
+              </div>
+              <!--/.service-box-->
+            </div>
+            <!--/.col-->
+
+            <div class="col-sm-6 col-lg-4">
+              <div class="service-box software">
+                <h5>Software</h5>
+                <ul>
+                  <li>
+                    <strong>1</strong>
+                    <span># of accounts</span>
+                  </li>
+                  <li>
+                    <strong>$1.5k</strong>
+                    <span>annual cost</span>
+                  </li>
+                </ul>
+              </div>
+              <!--/.service-box-->
+            </div>
+            <!--/.col-->
+
+            <div class="col-sm-6 col-lg-4">
+              <div class="service-box desk-phone">
+                <h5>Desk Phone</h5>
+                <ul>
+                  <li>
+                    <strong>1</strong>
+                    <span># of accounts</span>
+                  </li>
+                  <li>
+                    <strong>$1.5k</strong>
+                    <span>annual cost</span>
+                  </li>
+                </ul>
+              </div>
+              <!--/.service-box-->
+            </div>
+            <!--/.col-->
+          </div>
+          <!--/.row-->
+        </div>
+      </div>
+      <!--/.col-->
+    </div>
+    <!--/.row-->
+  </div>
+</div>
