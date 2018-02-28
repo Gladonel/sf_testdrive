@@ -1,0 +1,16 @@
+<div class="animated fadeIn">
+  <ngx-datatable
+    class="material striped"
+    [rows]="rows"
+    [columns]="columns"
+    [columnMode]="'force'"
+    [headerHeight]="50"
+    [footerHeight]="50"
+    [rowHeight]="'auto'"
+    [limit]="10">
+  </ngx-datatable>
+
+  <ng-template ngx-datatable-cell-template #removalTemplate let-rowIndex="rowIndex" let-value="value" let-row="row">
+    <span class="badge badge-info px-2">YES</span>
+  </ng-template>
+</div>

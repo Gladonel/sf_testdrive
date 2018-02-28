@@ -1,16 +1,16 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
 
-import { P404Component } from './404.component';
-import { P500Component } from './500.component';
-import { LoginComponent } from './login.component';
-import { RegisterComponent } from './register.component';
+import {P404Component} from './404.component';
+import {P500Component} from './500.component';
+import {LoginComponent} from './login.component';
+import {RegisterComponent} from './register.component';
 
 const routes: Routes = [
   {
     path: '',
     data: {
-      title: 'Example Pages'
+      title: 'Services'
     },
     children: [
       {
@@ -40,7 +40,7 @@ const routes: Routes = [
         data: {
           title: 'Register Page'
         }
-      }
+      },
     ]
   }
 ];
@@ -49,4 +49,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class PagesRoutingModule {}
+export class PagesRoutingModule {
+}

@@ -1,0 +1,66 @@
+[
+  {
+    "id": "APP1",
+    "name": "Acrobat Reader Pro X",
+    "description": "Complete solution for working with PDF documents",
+    "version": "12.0",
+    "cost": 449,
+    "historyMonth": 0
+  },
+  {
+    "id": "APP2",
+    "name": "Apache Tomcat",
+    "description": "Application that executes Java servlets and renders web pages",
+    "version": "7",
+    "cost": 38.28,
+    "historyMonth": 0
+  },
+  {
+    "id": "APP3",
+    "name": "Desktop Video",
+    "description": "Video conferencing",
+    "version": "2.6.1",
+    "cost": 299.88,
+    "historyMonth": 0
+  },
+  {
+    "id": "APP4",
+    "name": "Documentum",
+    "description": "Content management repository",
+    "version": "2.1.1",
+    "cost": 163.94,
+    "historyMonth": 4
+  },
+  {
+    "id": "APP5",
+    "name": "MyEclipse Blue",
+    "description": "Primarily used for developing applications in JAVA language",
+    "version": "14.4.1",
+    "cost": 161.88,
+    "historyMonth": 0
+  },
+  {
+    "id": "APP6",
+    "name": "Microsoft Office Pro 2013",
+    "description": "Suite of Word, Excel, Powerpoint, OneNote, Publisher, Access",
+    "version": "14 SP1",
+    "cost": 280.89,
+    "historyMonth": 6
+  },
+  {
+    "id": "APP7",
+    "name": "Microsoft Office Standard 2016",
+    "description": "Suite of Word, Excel and PowerPoint",
+    "version": "15 SP1",
+    "cost": 213.89,
+    "historyMonth": 0
+  },
+  {
+    "id": "APP8",
+    "name": "Salesforce",
+    "description": "Customer relationship management",
+    "version": "1.4.5",
+    "cost": 1150.92,
+    "historyMonth": 9
+  }
+]
