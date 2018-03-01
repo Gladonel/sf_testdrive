@@ -6,8 +6,6 @@ import {ServicesRoutingModule} from './services-routing.module';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {LastUsedDate} from '../pipes/siftfox.pipes';
 
-
-
 @NgModule({
   imports: [CommonModule, ServicesRoutingModule, NgxDatatableModule],
   declarations: [

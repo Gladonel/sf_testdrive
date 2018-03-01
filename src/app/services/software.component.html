@@ -1,16 +1,27 @@
 <div class="animated fadeIn">
   <ngx-datatable
-    class="material striped"
+    #serviceTable
+    class="material striped expandable"
     [rows]="rows"
     [columns]="columns"
     [columnMode]="'force'"
     [headerHeight]="50"
     [footerHeight]="50"
     [rowHeight]="'auto'"
-    [limit]="10">
+    [limit]="10"
+    [selected]="selected"
+    [selectionType]="'checkbox'"
+    [selectAllRowsOnPage]="false"
+    [displayCheck]="displayCheck"
+    (select)='onSelect($event)'>
   </ngx-datatable>
 
   <ng-template ngx-datatable-cell-template #removalTemplate let-rowIndex="rowIndex" let-value="value" let-row="row">
     <span class="badge badge-info px-2">YES</span>
+  </ng-template>
+
+  <ng-template ngx-datatable-cell-template #appNameTemplate let-row="row">
+    <div>{{row.name}}</div>
+    <div class="small muted">{{row.description}}</div>
   </ng-template>
 </div>
