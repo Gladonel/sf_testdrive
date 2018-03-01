@@ -8,30 +8,39 @@
             [options]="{items: 1, navigation: false, autoplay: true, loop: true}"
             [carouselClasses]="['owl-theme', 'row', 'sliding', 'px-3', 'text-center']">
             <div class="item">Initial software reviews result in 8 removals on average.</div>
-            <div class="item">Software removals deliver cost savings during contract renewals and repurposing of licenses.</div>
-            <div class="item">Quarterly reviews and removals of software improve spend rates and contract negotiations.</div>
+            <div class="item">Software removals deliver cost savings during contract renewals and repurposing of
+              licenses.
+            </div>
+            <div class="item">Quarterly reviews and removals of software improve spend rates and contract
+              negotiations.
+            </div>
           </owl-carousel>
         </div>
       </div>
     </div>
   </div>
 
-  <ngx-datatable
-    #serviceTable
-    class="material striped expandable"
-    [rows]="rows"
-    [columns]="columns"
-    [columnMode]="'force'"
-    [headerHeight]="50"
-    [footerHeight]="50"
-    [rowHeight]="'auto'"
-    [limit]="10"
-    [selected]="selected"
-    [selectionType]="'checkbox'"
-    [selectAllRowsOnPage]="false"
-    [displayCheck]="displayCheck"
-    (select)='onSelect($event)'>
-  </ngx-datatable>
+
+  <div class="row">
+    <div class="col-md-12">
+      <ngx-datatable
+        #serviceTable
+        class="card material striped expandable"
+        [rows]="rows"
+        [columns]="columns"
+        [columnMode]="'force'"
+        [headerHeight]="50"
+        [footerHeight]="50"
+        [rowHeight]="'auto'"
+        [limit]="10"
+        [selected]="selected"
+        [selectionType]="'checkbox'"
+        [selectAllRowsOnPage]="false"
+        [displayCheck]="displayCheck"
+        (select)='onSelect($event)'>
+      </ngx-datatable>
+    </div>
+  </div>
 
   <ng-template ngx-datatable-cell-template #removalTemplate let-rowIndex="rowIndex" let-value="value" let-row="row">
     <span class="badge badge-info px-2">YES</span>
