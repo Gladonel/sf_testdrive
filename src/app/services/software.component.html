@@ -1,4 +1,21 @@
 <div class="animated fadeIn">
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <owl-carousel
+            [options]="{items: 1, navigation: false, autoplay: true, loop: true}"
+            [carouselClasses]="['owl-theme', 'row', 'sliding', 'px-3', 'text-center']">
+            <div class="item">Initial software reviews result in 8 removals on average.</div>
+            <div class="item">Software removals deliver cost savings during contract renewals and repurposing of licenses.</div>
+            <div class="item">Quarterly reviews and removals of software improve spend rates and contract negotiations.</div>
+          </owl-carousel>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <ngx-datatable
     #serviceTable
     class="material striped expandable"

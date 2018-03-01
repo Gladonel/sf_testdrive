@@ -1,6 +1,14 @@
-a[class^="datatable-icon-"] {
-  text-decoration: none;
+.ngx-datatable.material {
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+  border: 1px solid #c2cfd6;
+
+  a[class^="datatable-icon-"] {
+    text-decoration: none;
+  }
+  .datatable-header-cell .datatable-header-cell-label {
+    font-weight: bold;
+  }
 }
-.datatable-header-cell .datatable-header-cell-label {
-  font-weight: bold;
-}
+
