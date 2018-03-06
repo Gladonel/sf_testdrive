@@ -1,14 +1,23 @@
-.ngx-datatable.material {
-  -webkit-box-shadow: none !important;
-  -moz-box-shadow: none !important;
-  box-shadow: none !important;
-  border: 1px solid #c2cfd6;
+.ngx-datatable {
+  &.material {
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+  }
+
+  &.table-outline {
+    border: 1px solid #eee;
+  }
 
   a[class^="datatable-icon-"] {
     text-decoration: none;
   }
-  .datatable-header-cell .datatable-header-cell-label {
-    font-weight: bold;
+  .datatable-header-cell {
+    background-color: #c2cfd6;
+
+    .datatable-header-cell-label {
+      font-weight: bold;
+    }
   }
 }
 

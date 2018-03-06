@@ -4,7 +4,7 @@
   <button class="navbar-toggler d-md-down-none" type="button" appSidebarToggler>&#9776;</button>
   <ul class="nav navbar-nav ml-auto">
     <li class="nav-item dropdown" dropdown (onToggle)="toggled($event)">
-      <a href class="nav-link dropdown-toggle mr-2" dropdownToggle (click)="false">
+      <a href class="nav-link dropdown-toggle mr-3" dropdownToggle (click)="false">
         <img src="assets/img/avatars/adam.png" class="img-avatar" alt="adam@siftfox.com">
         <span class="d-md-down-none">Adam</span>
       </a>
@@ -47,11 +47,11 @@
 
     <div class="container-fluid">
       <router-outlet></router-outlet>
-    </div><!-- /.conainer-fluid -->
+    </div><!-- /.container-fluid -->
   </main>
 
 </div>
 
 <footer class="app-footer">
-  <a href="http://www.siftfox.com">SiftFox</a> &copy; 2018. All rights reserved.
+  <a href="http://siftfox.herokuapp.com" target="_blank" rel="noopener">SiftFox</a> &copy; 2018. All rights reserved.
 </footer>

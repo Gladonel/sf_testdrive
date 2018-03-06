@@ -99,7 +99,7 @@ export class SoftwareComponent implements OnInit {
       },
       {
         name: 'Removal Requested',
-        canAutoResize: false,
+        maxWidth: 220,
         cellTemplate: this.removalTemplate
       }
     ];
