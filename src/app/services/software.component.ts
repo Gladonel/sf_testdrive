@@ -20,6 +20,8 @@ export class SoftwareComponent implements OnInit {
   rows = [];
   columns = [];
   selected = [];
+  totalSelectedItems = 0;
+  estimatedCostImpact = 0.00;
 
   constructor() {
     this.fetch((data) => {
@@ -43,8 +45,11 @@ export class SoftwareComponent implements OnInit {
 
     this.selected.splice(0, this.selected.length);
     this.selected.push(...selected);
+    this.totalSelectedItems = this.selected.length;
+    this.estimatedCostImpact = _.round(_.sumBy(this.selected, 'cost'), 2);
 
-    console.log(_.sumBy(this.selected, 'cost'));
+    console.log(this.selected);
+    console.log(this.estimatedCostImpact);
   }
 
   add() {

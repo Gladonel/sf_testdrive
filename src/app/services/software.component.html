@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="card">
-        <div class="card-body">
+        <div class="card-body pb-2">
           <owl-carousel
             [options]="{items: 1, navigation: false, autoplay: true, loop: true}"
             [carouselClasses]="['owl-theme', 'row', 'sliding', 'px-3', 'text-center']">
@@ -24,7 +24,18 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title clearfix">Your Software</h5>
+          <div class="row">
+            <div class="col-sm-12">
+              <h5 class="card-title clearfix">Your Software</h5>
+            </div>
+            <!--<div class="col-sm-7 d-none d-md-block">-->
+              <!--<div class="callout callout-info m-0">-->
+                <!--<small class="text-muted">New Clients</small>-->
+                <!--<br>-->
+                <!--<strong>9,123</strong>-->
+              <!--</div>-->
+            <!--</div>-->
+          </div>
           <hr>
           <ngx-datatable
             #serviceTable
@@ -68,6 +79,20 @@
               </ng-template>
             </ngx-datatable-footer>
           </ngx-datatable>
+
+          <ul class="removalstats list-unstyled text-center py-3">
+            <li class="clearfix">
+              <i class="icon-grid font-4xl text-info"></i>
+              <span class="stat-number text-danger">{{totalSelectedItems}}</span>
+              <small class="text-muted"># of Selected Items</small>
+            </li>
+
+            <li class="clearfix">
+              <i class="icon-trophy font-4xl text-success"></i>
+              <span class="stat-number text-danger">${{estimatedCostImpact | number : '1.2-2'}}</span>
+              <small class="text-muted">Estimated Cost Impact</small>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
