@@ -20,8 +20,8 @@ export class SoftwareComponent implements OnInit {
   rows = [];
   columns = [];
   selected = [];
-  totalSelectedItems = 0;
-  estimatedCostImpact = 0.00;
+  removedSw = [];
+  removalCount = 0;
 
   constructor() {
     this.fetch((data) => {
@@ -41,15 +41,12 @@ export class SoftwareComponent implements OnInit {
   }
 
   onSelect({ selected }) {
-    // console.log('Select Event', selected, this.selected);
-
     this.selected.splice(0, this.selected.length);
     this.selected.push(...selected);
-    this.totalSelectedItems = this.selected.length;
-    this.estimatedCostImpact = _.round(_.sumBy(this.selected, 'cost'), 2);
+  }
 
-    console.log(this.selected);
-    console.log(this.estimatedCostImpact);
+  calculateCostImpact() {
+    return _.round(_.sumBy(this.selected, 'cost'), 2);
   }
 
   add() {
@@ -61,14 +58,18 @@ export class SoftwareComponent implements OnInit {
   }
 
   remove() {
+    this.removedSw = _.map(this.selected, 'id');
+    sessionStorage.setItem('selectedSw', JSON.stringify(this.removedSw));
     this.selected = [];
   }
 
   displayCheck(row) {
-    return row.name !== 'Ethel Price';
+    row.removalStatus = _.includes(JSON.parse(sessionStorage.getItem('selectedSw')), row.id);
+    return !row.removalStatus;
   }
 
   ngOnInit(): void {
+    this.removedSw = JSON.parse(sessionStorage.getItem('selectedSw'));
     this.columns = [
       {
         width: 30,
