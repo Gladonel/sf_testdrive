@@ -107,8 +107,17 @@
             </div>
 
             <div class="col-sm-12">
-              <p class="no-removal" *ngIf="removalCount == 0">There is no removal yet.</p>
-              <ul class="timeline timeline-icons" *ngIf="removalCount > 0"></ul>
+              <p class="no-removal" *ngIf="removedServices.length == 0">There is no removal yet.</p>
+              <ul class="timeline timeline-icons" *ngIf="removedServices.length > 0">
+                <li *ngFor="let item of removedServices">
+                  <p>
+                    <span class="wow fadeInRight">Requested to remove {{item.name}} - ${{item.cost | number : '1.2-2'}}</span>
+                    <span class="timeline-icon wow fadeIn"><i class="fa fa-recycle text-success"></i></span>
+                    <span class="timeline-date wow fadeInUp">Mar 20 2018, 10:58</span>
+                  </p>
+
+                </li>
+              </ul>
             </div>
           </div>
         </div>

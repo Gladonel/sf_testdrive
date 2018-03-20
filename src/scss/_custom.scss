@@ -24,3 +24,49 @@
     }
   }
 }
+
+.timeline {
+  list-style: none;
+  padding-left: 0;
+  position: relative;
+
+  li {
+    position: relative;
+    padding-left: 70px;
+    margin-bottom: 20px;
+
+    &:after {
+      width: 32px;
+      height: 32px;
+      background: #fff;
+      border: 1px solid #e3e3e3;
+      border-radius: 50%;
+      position: absolute;
+
+      left: 14px;
+      top: 0;
+      z-index: 11;
+      content: '';
+    }
+
+    p {
+      margin-top: 0;
+
+      .timeline-icon {
+        position: absolute;
+        left: 23.5px;
+        top: 7px;
+        z-index: 12;
+      }
+
+      .timeline-date {
+        display: inline-block;
+        width: 100%;
+        color: #a6a6a6;
+        font-style: italic;
+        font-size: 13px;
+      }
+    }
+
+  }
+}

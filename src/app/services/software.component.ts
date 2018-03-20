@@ -12,7 +12,6 @@ import * as _ from 'lodash';
   encapsulation: ViewEncapsulation.None
 })
 export class SoftwareComponent implements OnInit {
-
   @ViewChild('serviceTable') serviceTable: any;
   @ViewChild('removalTemplate') public removalTemplate: TemplateRef<any>;
   @ViewChild('appNameTemplate') public appNameTemplate: TemplateRef<any>;
@@ -20,8 +19,7 @@ export class SoftwareComponent implements OnInit {
   rows = [];
   columns = [];
   selected = [];
-  removedSw = [];
-  removalCount = 0;
+  removedServices = [];
 
   constructor() {
     this.fetch((data) => {
@@ -40,7 +38,7 @@ export class SoftwareComponent implements OnInit {
     req.send();
   }
 
-  onSelect({ selected }) {
+  onSelect({selected}) {
     this.selected.splice(0, this.selected.length);
     this.selected.push(...selected);
   }
@@ -54,22 +52,35 @@ export class SoftwareComponent implements OnInit {
   }
 
   update() {
-    this.selected = [ this.rows[1], this.rows[3] ];
+    this.selected = [this.rows[1], this.rows[3]];
   }
 
   remove() {
-    this.removedSw = _.map(this.selected, 'id');
-    sessionStorage.setItem('selectedSw', JSON.stringify(this.removedSw));
+    const historySw = JSON.parse(sessionStorage.getItem('removedServices'));
+    if (historySw != null) {
+      this.removedServices = _.concat(this.selected, historySw);
+    }
+
+    sessionStorage.setItem('removedServices', JSON.stringify(this.removedServices));
+
     this.selected = [];
   }
 
   displayCheck(row) {
-    row.removalStatus = _.includes(JSON.parse(sessionStorage.getItem('selectedSw')), row.id);
+    let sessionRemovedSw = JSON.parse(sessionStorage.getItem('removedServices'));
+    if (sessionRemovedSw == null) {
+      sessionRemovedSw = [];
+    }
+    row.removalStatus = _.includes(_.map(sessionRemovedSw, 'id'), row.id);
     return !row.removalStatus;
   }
 
   ngOnInit(): void {
-    this.removedSw = JSON.parse(sessionStorage.getItem('selectedSw'));
+    this.removedServices = JSON.parse(sessionStorage.getItem('removedServices'));
+    if (this.removedServices == null) {
+      this.removedServices = [];
+    }
+    console.log(this.removedServices);
     this.columns = [
       {
         width: 30,
