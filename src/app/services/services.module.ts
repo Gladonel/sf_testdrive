@@ -6,9 +6,10 @@ import {ServicesRoutingModule} from './services-routing.module';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {LastUsedDate} from '../pipes/siftfox.pipes';
 import {OwlModule} from 'ngx-owl-carousel';
+import {NgwWowModule} from 'ngx-wow';
 
 @NgModule({
-  imports: [CommonModule, ServicesRoutingModule, NgxDatatableModule, OwlModule],
+  imports: [CommonModule, ServicesRoutingModule, NgxDatatableModule, OwlModule, NgwWowModule],
   declarations: [
     SoftwareComponent,
     LastUsedDate

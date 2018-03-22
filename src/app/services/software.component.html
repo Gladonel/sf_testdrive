@@ -111,11 +111,10 @@
               <ul class="timeline timeline-icons" *ngIf="removedServices.length > 0">
                 <li *ngFor="let item of removedServices">
                   <p>
-                    <span class="wow fadeInRight">Requested to remove {{item.name}} - ${{item.cost | number : '1.2-2'}}</span>
-                    <span class="timeline-icon wow fadeIn"><i class="fa fa-recycle text-success"></i></span>
-                    <span class="timeline-date wow fadeInUp">Mar 20 2018, 10:58</span>
+                    <span class="wow fadeInRight" data-wow-delay="0.1s">Requested to remove {{item.name}} - ${{item.cost | number : '1.2-2'}}</span>
+                    <span class="timeline-icon wow fadeIn" data-wow-delay="0.2s"><i class="fa fa-recycle text-success"></i></span>
+                    <span class="timeline-date wow fadeInUp" data-wow-delay="0.3s">Mar 20 2018, 10:58</span>
                   </p>
-
                 </li>
               </ul>
             </div>

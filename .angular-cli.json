@@ -21,14 +21,16 @@
       "styles": [
         "scss/style.scss",
         "../node_modules/owl.carousel/dist/assets/owl.carousel.css",
-        "../node_modules/owl.carousel/dist/assets/owl.theme.default.css"
+        "../node_modules/owl.carousel/dist/assets/owl.theme.default.css",
+        "../node_modules/animate.css/animate.min.css"
       ],
       "scripts": [
         "../node_modules/chart.js/dist/Chart.bundle.min.js",
         "../node_modules/chart.js/dist/Chart.min.js",
         "../node_modules/moment/min/moment.min.js",
         "../node_modules/jquery/dist/jquery.js",
-        "../node_modules/owl.carousel/dist/owl.carousel.js"
+        "../node_modules/owl.carousel/dist/owl.carousel.js",
+        "../node_modules/wowjs/dist/wow.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

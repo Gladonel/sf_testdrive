@@ -1,7 +1,11 @@
-import {Component, OnInit, TemplateRef, ViewChild, ViewEncapsulation} from '@angular/core';
+import {Component, OnDestroy, OnInit, TemplateRef, ViewChild, ViewEncapsulation} from '@angular/core';
 import {CurrencyPipe} from '@angular/common';
 import {LastUsedDate} from '../pipes/siftfox.pipes';
 import * as _ from 'lodash';
+import {Subscription} from 'rxjs/Subscription';
+import {NgwWowService} from 'ngx-wow';
+import {NavigationEnd, Router} from '@angular/router';
+import {forEach} from '@angular/router/src/utils/collection';
 
 @Component({
   templateUrl: 'software.component.html',
@@ -11,7 +15,8 @@ import * as _ from 'lodash';
   ],
   encapsulation: ViewEncapsulation.None
 })
-export class SoftwareComponent implements OnInit {
+export class SoftwareComponent implements OnInit, OnDestroy {
+
   @ViewChild('serviceTable') serviceTable: any;
   @ViewChild('removalTemplate') public removalTemplate: TemplateRef<any>;
   @ViewChild('appNameTemplate') public appNameTemplate: TemplateRef<any>;
@@ -21,9 +26,17 @@ export class SoftwareComponent implements OnInit {
   selected = [];
   removedServices = [];
 
-  constructor() {
+  private wowSubscription: Subscription;
+
+  constructor(private router: Router, private wowService: NgwWowService) {
     this.fetch((data) => {
       this.rows = data;
+    });
+
+    this.router.events.filter(event => event instanceof NavigationEnd).subscribe(event => {
+      // Reload WoW animations when done navigating to page,
+      // but you are free to call it whenever/wherever you like
+      this.wowService.init();
     });
   }
 
@@ -58,7 +71,12 @@ export class SoftwareComponent implements OnInit {
   remove() {
     const historySw = JSON.parse(sessionStorage.getItem('removedServices'));
     if (historySw != null) {
-      this.removedServices = _.concat(this.selected, historySw);
+      // this.removedServices = _.concat(this.selected, historySw);
+      for (const removedService of this.selected) {
+        this.removedServices.unshift(removedService);
+      }
+    } else {
+      this.removedServices = this.selected;
     }
 
     sessionStorage.setItem('removedServices', JSON.stringify(this.removedServices));
@@ -75,12 +93,7 @@ export class SoftwareComponent implements OnInit {
     return !row.removalStatus;
   }
 
-  ngOnInit(): void {
-    this.removedServices = JSON.parse(sessionStorage.getItem('removedServices'));
-    if (this.removedServices == null) {
-      this.removedServices = [];
-    }
-    console.log(this.removedServices);
+  initColumns(): void {
     this.columns = [
       {
         width: 30,
@@ -120,5 +133,18 @@ export class SoftwareComponent implements OnInit {
         cellTemplate: this.removalTemplate
       }
     ];
+  }
+
+  ngOnInit(): void {
+    this.removedServices = JSON.parse(sessionStorage.getItem('removedServices'));
+    if (this.removedServices == null) {
+      this.removedServices = [];
+    }
+
+    this.initColumns();
+  }
+
+  ngOnDestroy(): void {
+    this.wowSubscription.unsubscribe();
   }
 }
