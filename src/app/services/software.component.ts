@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit, TemplateRef, ViewChild, ViewEncapsulation}
 import {CurrencyPipe} from '@angular/common';
 import {LastUsedDate} from '../pipes/siftfox.pipes';
 import * as _ from 'lodash';
-import {Subscription} from 'rxjs/Subscription';
+import {Subscription} from 'rxjs';
 import {NgwWowService} from 'ngx-wow';
 import {NavigationEnd, Router} from '@angular/router';
 import {forEach} from '@angular/router/src/utils/collection';
