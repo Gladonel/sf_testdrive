@@ -23,7 +23,7 @@
               "src/scss/style.scss",
               "node_modules/owl.carousel/dist/assets/owl.carousel.css",
               "node_modules/owl.carousel/dist/assets/owl.theme.default.css",
-              "node_modules/animate.css/animate.min.css"
+              "node_modules/animate.css/animate.css"
             ],
             "scripts": [
               "node_modules/chart.js/dist/Chart.bundle.min.js",
@@ -90,7 +90,7 @@
               "src/scss/style.scss",
               "node_modules/owl.carousel/dist/assets/owl.carousel.css",
               "node_modules/owl.carousel/dist/assets/owl.theme.default.css",
-              "node_modules/animate.css/animate.min.css"
+              "node_modules/animate.css/animate.css"
             ],
             "assets": [
               "src/assets"
