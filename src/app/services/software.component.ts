@@ -6,6 +6,7 @@ import {Subscription} from 'rxjs';
 import {NgwWowService} from 'ngx-wow';
 import {NavigationEnd, Router} from '@angular/router';
 import {forEach} from '@angular/router/src/utils/collection';
+import { filter } from 'rxjs/operators';
 
 @Component({
   templateUrl: 'software.component.html',
@@ -33,7 +34,7 @@ export class SoftwareComponent implements OnInit, OnDestroy {
       this.rows = data;
     });
 
-    this.router.events.filter(event => event instanceof NavigationEnd).subscribe(event => {
+    this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(event => {
       // Reload WoW animations when done navigating to page,
       // but you are free to call it whenever/wherever you like
       this.wowService.init();
