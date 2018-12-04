@@ -1,0 +1,16 @@
+[
+  {
+    "id": "DEV1",
+    "deviceId": "SIFTFOX-VD-001",
+    "category": "Virtual Desktop",
+    "cost": 500,
+    "historyMonth": 0
+  },
+  {
+    "id": "DEV2",
+    "deviceId": "SIFTFOX-SD-001",
+    "category": "Secured Virtual Desktop",
+    "cost": 390,
+    "historyMonth": 3
+  }
+]

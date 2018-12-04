@@ -12,18 +12,17 @@ import * as _ from "lodash";
 import { Subscription } from "rxjs";
 import { NgwWowService } from "ngx-wow";
 import { NavigationEnd, Router } from "@angular/router";
-import { forEach } from "@angular/router/src/utils/collection";
 import { filter } from "rxjs/operators";
 
 @Component({
-  templateUrl: "software.component.html",
+  templateUrl: "hardware.component.html",
   styleUrls: [
     "../../../node_modules/@swimlane/ngx-datatable/release/themes/material.css",
     "../../../node_modules/@swimlane/ngx-datatable/release/assets/icons.css"
   ],
   encapsulation: ViewEncapsulation.None
 })
-export class SoftwareComponent implements OnInit, OnDestroy {
+export class HardwareComponent implements OnInit, OnDestroy {
   @ViewChild("serviceTable") serviceTable: any;
   @ViewChild("removalTemplate") public removalTemplate: TemplateRef<any>;
   @ViewChild("appNameTemplate") public appNameTemplate: TemplateRef<any>;
@@ -51,7 +50,7 @@ export class SoftwareComponent implements OnInit, OnDestroy {
 
   fetch(cb) {
     const req = new XMLHttpRequest();
-    req.open("GET", `assets/data/software.json`);
+    req.open("GET", `assets/data/hardware.json`);
 
     req.onload = () => {
       cb(JSON.parse(req.response));
@@ -119,14 +118,12 @@ export class SoftwareComponent implements OnInit, OnDestroy {
         checkboxable: true
       },
       {
-        name: "Application Name",
-        prop: "name",
-        cellTemplate: this.appNameTemplate
+        name: "Device ID",
+        prop: "deviceId"
       },
       {
-        name: "Version",
-        width: 100,
-        canAutoResize: false
+        name: "Category",
+        prop: "category"
       },
       {
         name: "Cost",

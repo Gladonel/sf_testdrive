@@ -1,22 +1,30 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
 
-import {SoftwareComponent} from './software.component';
+import { SoftwareComponent } from "./software.component";
+import { HardwareComponent } from "./hardware.component";
 
 const routes: Routes = [
   {
-    path: '',
+    path: "",
     data: {
-      title: 'Services'
+      title: "Services"
     },
     children: [
       {
-        path: 'software',
+        path: "software",
         component: SoftwareComponent,
         data: {
-          title: 'Software'
+          title: "Software"
         }
       },
+      {
+        path: "hardware",
+        component: HardwareComponent,
+        data: {
+          title: "Hardware"
+        }
+      }
     ]
   }
 ];
@@ -25,5 +33,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ServicesRoutingModule {
-}
+export class ServicesRoutingModule {}

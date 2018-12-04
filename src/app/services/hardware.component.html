@@ -1,0 +1,188 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body pb-2">
+          <owl-carousel
+            [options]="{
+              items: 1,
+              navigation: false,
+              autoplay: true,
+              loop: true
+            }"
+            [carouselClasses]="[
+              'owl-theme',
+              'row',
+              'sliding',
+              'px-3',
+              'text-center'
+            ]"
+          >
+            <div class="item">SiftFox has a 1-device per user policy.</div>
+            <div class="item">
+              Returning unused Virtual Desktops eliminates service and support
+              costs.
+            </div>
+            <div class="item">
+              Cost savings are reflected in the next billing cycle.
+            </div>
+          </owl-carousel>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-12">
+              <h5 class="card-title clearfix">Your Hardware</h5>
+              <hr />
+            </div>
+          </div>
+          <!--<hr>-->
+          <ngx-datatable
+            #serviceTable
+            class="material striped expandable table-outline"
+            [rows]="rows"
+            [columns]="columns"
+            [columnMode]="'force'"
+            [headerHeight]="50"
+            [footerHeight]="50"
+            [rowHeight]="'auto'"
+            [limit]="10"
+            [selected]="selected"
+            [selectionType]="'checkbox'"
+            [displayCheck]="displayCheck"
+            (select)="onSelect($event)"
+          >
+            <ngx-datatable-footer>
+              <ng-template
+                ngx-datatable-footer-template
+                let-rowCount="rowCount"
+                let-pageSize="pageSize"
+                let-selectedCount="selectedCount"
+                let-curPage="curPage"
+                let-offset="offset"
+              >
+                <div style="padding: 5px 10px">
+                  <div>
+                    Showing {{ (curPage - 1) * pageSize + 1 }} to
+                    {{
+                      pageSize * curPage > rowCount
+                        ? rowCount
+                        : pageSize * curPage
+                    }}
+                    of {{ rowCount }} entries
+                  </div>
+                </div>
+                <datatable-pager
+                  [pagerLeftArrowIcon]="'datatable-icon-left'"
+                  [pagerRightArrowIcon]="'datatable-icon-right'"
+                  [pagerPreviousIcon]="'datatable-icon-prev'"
+                  [pagerNextIcon]="'datatable-icon-skip'"
+                  [page]="curPage"
+                  [size]="pageSize"
+                  [count]="rowCount"
+                  [hidden]="!(rowCount / pageSize > 1)"
+                  (change)="serviceTable.onFooterPage($event)"
+                >
+                </datatable-pager>
+              </ng-template>
+            </ngx-datatable-footer>
+          </ngx-datatable>
+
+          <ul class="removalstats list-unstyled text-center py-3">
+            <li class="clearfix">
+              <i class="icon-grid font-4xl text-info"></i>
+              <span class="stat-number text-danger">{{ selected.length }}</span>
+              <small class="text-muted"># of Selected Items</small>
+            </li>
+
+            <li class="clearfix">
+              <i class="icon-trophy font-4xl text-success"></i>
+              <span class="stat-number text-danger"
+                >${{ calculateCostImpact() | number: "1.2-2" }}</span
+              >
+              <small class="text-muted">Estimated Cost Impact</small>
+            </li>
+          </ul>
+
+          <div class="text-center">
+            <button
+              (click)="remove()"
+              class="btn btn-primary btn-lg"
+              [disabled]="selected.length == 0"
+            >
+              <i class="icon-trophy"></i> Remove
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-12">
+              <h5 class="card-title clearfix">Your Removal History</h5>
+              <hr />
+            </div>
+
+            <div class="col-sm-12">
+              <p class="no-removal" *ngIf="removedServices.length == 0">
+                There is no removal yet.
+              </p>
+              <ul
+                class="timeline timeline-icons"
+                *ngIf="removedServices.length > 0"
+              >
+                <li *ngFor="let item of removedServices">
+                  <p>
+                    <span class="wow fadeInRight" data-wow-delay="0.1s"
+                      >Requested to remove {{ item.name }} - ${{
+                        item.cost | number: "1.2-2"
+                      }}</span
+                    >
+                    <span class="timeline-icon wow fadeIn" data-wow-delay="0.2s"
+                      ><i class="fa fa-recycle text-success"></i
+                    ></span>
+                    <span
+                      class="timeline-date wow fadeInUp"
+                      data-wow-delay="0.3s"
+                      >Mar 20 2018, 10:58</span
+                    >
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template
+    ngx-datatable-cell-template
+    #removalTemplate
+    let-rowIndex="rowIndex"
+    let-value="value"
+    let-row="row"
+  >
+    <span
+      class="badge px-2"
+      [ngClass]="row.removalStatus ? 'badge-info' : 'badge-warning'"
+      >{{ row.removalStatus ? "Yes" : "No" }}</span
+    >
+  </ng-template>
+
+  <ng-template ngx-datatable-cell-template #appNameTemplate let-row="row">
+    <div>{{ row.name }}</div>
+    <div class="small muted">{{ row.description }}</div>
+  </ng-template>
+</div>
