@@ -23,9 +23,11 @@ import { filter } from "rxjs/operators";
   encapsulation: ViewEncapsulation.None
 })
 export class HardwareComponent implements OnInit, OnDestroy {
-  @ViewChild("serviceTable") serviceTable: any;
-  @ViewChild("removalTemplate") public removalTemplate: TemplateRef<any>;
-  @ViewChild("appNameTemplate") public appNameTemplate: TemplateRef<any>;
+  @ViewChild("serviceTable", { static: true }) serviceTable: any;
+  @ViewChild("removalTemplate", { static: true })
+  public removalTemplate: TemplateRef<any>;
+  @ViewChild("appNameTemplate", { static: true })
+  public appNameTemplate: TemplateRef<any>;
 
   rows = [];
   columns = [];

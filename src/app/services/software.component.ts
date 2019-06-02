@@ -12,7 +12,6 @@ import * as _ from "lodash";
 import { Subscription } from "rxjs";
 import { NgwWowService } from "ngx-wow";
 import { NavigationEnd, Router } from "@angular/router";
-import { forEach } from "@angular/router/src/utils/collection";
 import { filter } from "rxjs/operators";
 
 @Component({
@@ -24,17 +23,16 @@ import { filter } from "rxjs/operators";
   encapsulation: ViewEncapsulation.None
 })
 export class SoftwareComponent implements OnInit, OnDestroy {
-  @ViewChild("serviceTable") serviceTable: any;
-  @ViewChild("removalTemplate") public removalTemplate: TemplateRef<any>;
-  @ViewChild("appNameTemplate") public appNameTemplate: TemplateRef<any>;
+  @ViewChild("serviceTable", { static: true }) serviceTable: any;
+  @ViewChild("removalTemplate", { static: true })
+  public removalTemplate: TemplateRef<any>;
+  @ViewChild("appNameTemplate", { static: true })
+  public appNameTemplate: TemplateRef<any>;
 
   rows = [];
   columns = [];
   selected = [];
   removedServices = [];
-
-  private wowSubscription: Subscription;
-
   constructor(private router: Router, private wowService: NgwWowService) {
     this.fetch(data => {
       this.rows = data;
@@ -42,7 +40,7 @@ export class SoftwareComponent implements OnInit, OnDestroy {
 
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe(event => {
+      .subscribe(() => {
         // Reload WoW animations when done navigating to page,
         // but you are free to call it whenever/wherever you like
         this.wowService.init();
