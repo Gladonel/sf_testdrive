@@ -9,7 +9,6 @@ import {
 import { CurrencyPipe } from "@angular/common";
 import { LastUsedDate } from "../pipes/siftfox.pipes";
 import * as _ from "lodash";
-import { Subscription } from "rxjs";
 import { NgwWowService } from "ngx-wow";
 import { NavigationEnd, Router } from "@angular/router";
 import { filter } from "rxjs/operators";
